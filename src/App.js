@@ -3,12 +3,8 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBook from './searchBook'
 import Book from './book'
-import {
-  Route
-} from 'react-router-dom'
-import {
-  Link
-} from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class BooksApp extends React.Component {
     state = {
@@ -21,7 +17,7 @@ class BooksApp extends React.Component {
       //three shelfs to show
       shelfs: ['currentlyReading', 'wantToRead', 'read'],
       books: []
-
+      
     }
     //get books information from server
     componentDidMount() {
