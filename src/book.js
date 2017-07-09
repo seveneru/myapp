@@ -5,14 +5,16 @@ import BookShelfChanger from './bookShelfChanger'
 class Book extends Component{
   render(){
     return(
+      <li>
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imgLinks})` }}></div>
-          <BookShelfChanger shelf={this.props.shelf} updateShelf={this.props.updateShelfDate} id={this.props.id} title={this.props.title} authors={this.props.authors} imgLinks={this.props.imgLinks}/>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.info.imageLinks.thumbnail})` }}></div>
+          <BookShelfChanger shelf={this.props.shelf} info={this.props.info} updateShelf={this.props.updateShelfDate} />
         </div>
-        <div className="book-title">{this.props.title}</div>
-        <div className="book-authors">{this.props.authors}</div>
+        <div className="book-title">{this.props.info.title}</div>
+        <div className="book-authors">{this.props.info.authors}</div>
       </div>
+      </li>
     )
   }
 }

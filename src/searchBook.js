@@ -40,15 +40,12 @@ class SearchBook extends Component{
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.result.length>0&&this.state.result.map(book=>(
+            {this.state.result.length>0&&this.state.result.map((book)=>(
               <Book
                 shelf='none'
-                id={book.id}
-                key={book.title}
-                title={book.title}
-                authors={book.authors}
-                imgLinks={book.imageLinks&&book.imageLinks.thumbnail}
+                key={book.id}
                 updateShelfDate={this.props.update}
+                info={book}
               />
             ))}
           </ol>

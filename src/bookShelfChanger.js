@@ -17,7 +17,7 @@ class BookShelfChanger extends Component{
   render(){
     return(
         <div className="book-shelf-changer">
-            <select defaultValue={this.props.shelf} onChange={(event) => this.updateShelf(event.target.value,{id:this.props.id,title:this.props.title,authors:this.props.authors,shelf:this.props.shelf,imageLinks:this.props.imgLinks})}>
+            <select defaultValue={this.props.shelf} onChange={(event) => this.updateShelf(event.target.value,{id:this.props.info.id,title:this.props.info.title,authors:this.props.info.authors,shelf:this.props.shelf,imageLinks:this.props.info.imageLinks})}>
               {this.state.ops.map(op=>(
                 <option key={op.cont} value={op.value}  disabled={op.cont==='Move to...'&&'disabled'} >{op.cont}</option>
               ))}

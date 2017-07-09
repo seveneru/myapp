@@ -31,7 +31,7 @@ class BooksApp extends React.Component {
           books: books.map((book) => ({
             id: book.id,
             shelf: book.shelf,
-            imageLinks: (book.imageLinks && book.imageLinks.thumbnail),
+            imageLinks: book.imageLinks,
             title: book.title,
             authors: book.authors
           }))
@@ -76,61 +76,37 @@ class BooksApp extends React.Component {
     render() {
       console.log(this.state.books)
       return (
-        <div className = "app" >
-        //search page
-        <Route path = '/search'
-        render = {() =>
-          (<SearchBook update = {this.add}/>)
-          }
-          />
-          //home page
-          <Route exact path = '/'
-          render = {
+        <div className="app" >
+        <Route path='/search' render={() =>
+          (<SearchBook update={this.add}/>)}/>
+        <Route exact path='/' render={
             () =>
-            ( <div className = "list-books" >
-              <div className = "list-books-title" >
-              <h1 > MyReads </h1> < /div >
-              <div className = "list-books-content" > {
-                this.state.shelfs.map(shelf => (
-                  <div key = {shelf} >
-                  <div className = "bookshelf" >
-                  <h2 className = "bookshelf-title" > {
-                    shelf
-                  } </h2>
-                  <div className = "bookshelf-books" >
-                  <ol className = "books-grid" > {
-                    this.state.books.map(book => (book.shelf === shelf && ( < li key = {
-                        book.title
-                      } > < Book key = {
-                        book.title
-                      }
-                      id = {
-                        book.id
-                      }
-                      shelf = {
-                        book.shelf
-                      }
-                      title = {
-                        book.title
-                      }
-                      authors = {
-                        book.authors
-                      }
-                      imgLinks = {
-                        book.imageLinks
-                      }
-                      updateShelfDate = {
+            (<div className="list-books" >
+              <div className="list-books-title" >
+              <h1 > MyReads </h1> </div>
+              <div className="list-books-content" > {
+                this.state.shelfs.map((shelf,index) => (
+                  <div key={shelf}>
+                  <div className="bookshelf" >
+                  <h2 className="bookshelf-title" >{shelf}</h2>
+                  <div className="bookshelf-books" >
+                  <ol key={index} className="books-grid" > {
+                    this.state.books.map((book,index) => (book.shelf===shelf && (<Book
+                      key={index}
+                      shelf={book.shelf}
+                      info={book}
+                      updateShelfDate={
                         this.update
                       }
-                      /></li > )))
+                      />)))
                   } </ol>
                   </div >
                   </div>
                   </div >
                 ))
               } </div>
-              <div className = "open-search" >
-              <Link to = '/search' > Add a book < /Link>
+              <div className="open-search" >
+              <Link to='/search' > Add a book < /Link>
               </div>
               </div>
             )
