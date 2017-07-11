@@ -10,14 +10,10 @@ class BookShelfChanger extends Component{
         {value:'none',cont:'None'}
         ]
   }
-//update function
-  updateShelf=(e,c)=>{
-    this.props.updateShelf(e,c)
-  }
   render(){
     return(
         <div className="book-shelf-changer">
-            <select defaultValue={this.props.shelf} onChange={(event) => this.updateShelf(event.target.value,{id:this.props.info.id,title:this.props.info.title,authors:this.props.info.authors,shelf:this.props.shelf,imageLinks:this.props.info.imageLinks})}>
+            <select defaultValue={this.props.shelf} onChange={(event) => this.props.updateShelfDate(event.target.value,this.props.info)}>
               {this.state.ops.map(op=>(
                 <option key={op.cont} value={op.value}  disabled={op.cont==='Move to...'&&'disabled'} >{op.cont}</option>
               ))}

@@ -13,6 +13,13 @@ class SearchBook extends Component{
     if (query) {
       BooksAPI.search(query).then(books => {
         if (books.length) {
+          books.map(book=>{
+            this.props.books.map(shelfBook=>{
+              if(book.id==shelfBook.id){
+                book.shelf=shelfBook.shelf
+              }
+            })
+          })
           this.setState({
             result: books
           })
@@ -42,7 +49,7 @@ class SearchBook extends Component{
           <ol className="books-grid">
             {this.state.result.length>0&&this.state.result.map((book)=>(
               <Book
-                shelf='none'
+                shelf={book.shelf}
                 key={book.id}
                 updateShelfDate={this.props.update}
                 info={book}
